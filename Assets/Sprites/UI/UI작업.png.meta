@@ -1,0 +1,557 @@
+fileFormatVersion: 2
+guid: 9e47d1298f44208418800e6ad394fd9e
+TextureImporter:
+  internalIDToNameTable: []
+  externalObjects: {}
+  serializedVersion: 12
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  vTOnly: 0
+  ignoreMasterTextureLimit: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: 1
+    aniso: 1
+    mipBias: 0
+    wrapU: 1
+    wrapV: 1
+    wrapW: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 0
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 100
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  flipbookRows: 1
+  flipbookColumns: 1
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  ignorePngGamma: 0
+  applyGammaDecoding: 0
+  cookieLightType: 0
+  platformSettings:
+  - serializedVersion: 3
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: Server
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: Android
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: 50
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 1
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: WebGL
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: TextField
+      rect:
+        serializedVersion: 2
+        x: 1271
+        y: 3669
+        width: 2743
+        height: 1071
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 195, y: 186, z: 181, w: 170}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 6c2ce928b5956e14a845ee3c248d4ca2
+      internalID: 1736072285
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Button
+      rect:
+        serializedVersion: 2
+        x: 1287
+        y: 3106
+        width: 1401
+        height: 402
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 214, y: 203, z: 205, w: 199}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 45f795e593e43864d88c3262a40fc9aa
+      internalID: -2092852722
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: UnlockedStage
+      rect:
+        serializedVersion: 2
+        x: 37
+        y: 2416
+        width: 1071
+        height: 1071
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: bd0e94fd24a2ca7489ff2406b7a0d9b3
+      internalID: -863941290
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Arrow
+      rect:
+        serializedVersion: 2
+        x: 3059
+        y: 3106
+        width: 880
+        height: 400
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e36fb25b61a457f4ba1a11ffe04cc111
+      internalID: 1039184529
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: SeaweedGauge
+      rect:
+        serializedVersion: 2
+        x: 1193
+        y: 2121
+        width: 818
+        height: 833
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 4778b09ae922e4a4eb1e740886ed4ef1
+      internalID: 1969409908
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Setting
+      rect:
+        serializedVersion: 2
+        x: 3212
+        y: 2218
+        width: 704
+        height: 734
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 20627e43557685842a6d102c5f6e9ab5
+      internalID: 1266634712
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Coin
+      rect:
+        serializedVersion: 2
+        x: 2180
+        y: 2097
+        width: 809
+        height: 811
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a6e0d7bb34845554eb869ac03c1ab8a2
+      internalID: 1824191796
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: LockedStage
+      rect:
+        serializedVersion: 2
+        x: 37
+        y: 1163
+        width: 1070
+        height: 1069
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: c30bab0c27352754897d67b8968759bb
+      internalID: -228722801
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: StarSeaweed1
+      rect:
+        serializedVersion: 2
+        x: 1407
+        y: 1083
+        width: 359
+        height: 824
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d6706575a4db8484a914fb6814139157
+      internalID: 1993628568
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: StarSeaweed2
+      rect:
+        serializedVersion: 2
+        x: 1829
+        y: 1083
+        width: 310
+        height: 949
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 38852711551f39b44ba7a5c4ba44703e
+      internalID: 2070398925
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: StarSeaweed3
+      rect:
+        serializedVersion: 2
+        x: 2203
+        y: 1083
+        width: 357
+        height: 824
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: acc460f9b54c0b2478586a07d360db75
+      internalID: 1830253159
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: FailedSeaweed1
+      rect:
+        serializedVersion: 2
+        x: 2770
+        y: 1083
+        width: 357
+        height: 824
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 146c16e495ae82f4abb11ed7c8b01152
+      internalID: -972020310
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: FailedSeaweed2
+      rect:
+        serializedVersion: 2
+        x: 3192
+        y: 1083
+        width: 311
+        height: 949
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: cd96bf48f132b9f48b7bb5df876e76f4
+      internalID: -1959460837
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: FailedSeaweed3
+      rect:
+        serializedVersion: 2
+        x: 3567
+        y: 1083
+        width: 357
+        height: 824
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 5def231271a3b89489db3525db1677e1
+      internalID: 1333377187
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ClearedStage
+      rect:
+        serializedVersion: 2
+        x: 39
+        y: 3669
+        width: 1071
+        height: 1071
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 4d60d32e105aa0346b95a9827a275e19
+      internalID: 1701363948
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    physicsShape: []
+    bones: []
+    spriteID: 5e97eb03825dee720800000000000000
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+    nameFileIdTable:
+      "UI\uC791\uC5C5_86": 1357245636
+      "UI\uC791\uC5C5_9": -452374052
+      "UI\uC791\uC5C5_53": -993173939
+      "UI\uC791\uC5C5_70": -2138046655
+      "UI\uC791\uC5C5_20": -1543504747
+      TextField: 1736072285
+      StarSeaweed3: 1830253159
+      "UI\uC791\uC5C5_92": -1481464426
+      SeaweedGauge: 1969409908
+      Coin: 1824191796
+      "UI\uC791\uC5C5_90": -1705925715
+      "UI\uC791\uC5C5_68": 1358783206
+      "UI\uC791\uC5C5_11": 44414599
+      StarSeaweed1: 1993628568
+      "UI\uC791\uC5C5_41": 1894160084
+      "UI\uC791\uC5C5_85": -124806333
+      "UI\uC791\uC5C5_79": 1130291510
+      "UI\uC791\uC5C5_0": 1905342849
+      "UI\uC791\uC5C5_36": 1882407247
+      FailedSeaweed3: 1333377187
+      "UI\uC791\uC5C5_73": 832240425
+      "UI\uC791\uC5C5_84": 1699430780
+      "UI\uC791\uC5C5_72": 1000680436
+      "UI\uC791\uC5C5_43": -1189813488
+      "UI\uC791\uC5C5_18": -1399258661
+      "UI\uC791\uC5C5_78": 243275710
+      "UI\uC791\uC5C5_21": -323310939
+      "UI\uC791\uC5C5_71": 641268735
+      "UI\uC791\uC5C5_12": 642456695
+      "UI\uC791\uC5C5_61": -2054360259
+      "UI\uC791\uC5C5_65": 454495415
+      "UI\uC791\uC5C5_64": 1084207841
+      LockedStage: -228722801
+      "UI\uC791\uC5C5_27": 380030611
+      "UI\uC791\uC5C5_74": 2102886920
+      "UI\uC791\uC5C5_54": 483151000
+      "UI\uC791\uC5C5_75": -1583066317
+      "UI\uC791\uC5C5_42": -668030300
+      "UI\uC791\uC5C5_88": -169731545
+      "UI\uC791\uC5C5_8": 1065020115
+      "UI\uC791\uC5C5_49": -1125416545
+      "UI\uC791\uC5C5_89": 1267397288
+      "UI\uC791\uC5C5_15": -419750011
+      "UI\uC791\uC5C5_77": 1994881582
+      "UI\uC791\uC5C5_52": 532895851
+      "UI\uC791\uC5C5_56": 1045333316
+      "UI\uC791\uC5C5_25": 810719538
+      "UI\uC791\uC5C5_82": -1034348400
+      "UI\uC791\uC5C5_14": -1519526696
+      "UI\uC791\uC5C5_37": -193788934
+      "UI\uC791\uC5C5_55": -2067309967
+      "UI\uC791\uC5C5_48": -57717786
+      "UI\uC791\uC5C5_28": 523777347
+      "UI\uC791\uC5C5_35": 1973057656
+      FailedSeaweed1: -972020310
+      "UI\uC791\uC5C5_57": -1357550108
+      "UI\uC791\uC5C5_3": 418125627
+      ClearedStage: 1701363948
+      "UI\uC791\uC5C5_69": 358096740
+      "UI\uC791\uC5C5_80": -561736681
+      "UI\uC791\uC5C5_38": -425954915
+      "UI\uC791\uC5C5_44": 314792057
+      "UI\uC791\uC5C5_67": -782979071
+      "UI\uC791\uC5C5_87": -200467217
+      "UI\uC791\uC5C5_7": 1551172725
+      "UI\uC791\uC5C5_83": -871603301
+      "UI\uC791\uC5C5_76": -683113768
+      "UI\uC791\uC5C5_13": 1687669666
+      Arrow: 1039184529
+      Setting: 1266634712
+      "UI\uC791\uC5C5_63": 1910444175
+      "UI\uC791\uC5C5_4": 234912569
+      "UI\uC791\uC5C5_47": 1457975198
+      "UI\uC791\uC5C5_93": 222286587
+      "UI\uC791\uC5C5_45": -275103760
+      "UI\uC791\uC5C5_59": 1034565919
+      "UI\uC791\uC5C5_58": 2077163815
+      "UI\uC791\uC5C5_81": -688071835
+      StarSeaweed2: 2070398925
+      FailedSeaweed2: -1959460837
+      "UI\uC791\uC5C5_24": 532807724
+      "UI\uC791\uC5C5_91": -2104127626
+      "UI\uC791\uC5C5_10": 2145586067
+      "UI\uC791\uC5C5_46": 456060088
+      UnlockedStage: -863941290
+      Button: -2092852722
+      "UI\uC791\uC5C5_50": 1509407706
+      "UI\uC791\uC5C5_39": 412109954
+      "UI\uC791\uC5C5_23": 1712758479
+      "UI\uC791\uC5C5_51": 983923019
+      "UI\uC791\uC5C5_40": -1142760061
+      "UI\uC791\uC5C5_62": -1673032093
+      "UI\uC791\uC5C5_66": 2024409012
+      "UI\uC791\uC5C5_60": -1491373992
+      "UI\uC791\uC5C5_26": 156125073
+  spritePackingTag: 
+  pSDRemoveMatte: 0
+  pSDShowRemoveMatteOption: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
