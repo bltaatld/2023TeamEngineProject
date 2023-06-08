@@ -32,6 +32,7 @@ public class PlayerMove : MonoBehaviour
 			// 첫 번째 터치 입력을 확인하고, UI 버튼을 클릭하지 않았을 때 함수를 작동합니다.
 			if (touch.phase == TouchPhase.Began && !isButtonPressed && !isMoving && !CanMove && !EventSystem.current.IsPointerOverGameObject(touch.fingerId))
 			{
+                Camera.main.orthographicSize = 40f;
                 isMoving = true;
                 moveTimer = 0f;
                 startPosition = transform.position;
@@ -79,11 +80,12 @@ public class PlayerMove : MonoBehaviour
 			{
 				isMoving = false;
 				curserRender.gameObject.SetActive(true);
-			}
+				GameManager.instance.cameraHandler.CenterCameraOnPlayerPosition();
+            }
 		}
 	}
 
-	/*public void OnCollisionEnter2D(Collision2D collision)
+    /*public void OnCollisionEnter2D(Collision2D collision)
 	{
 		if (collision.gameObject.CompareTag("Ground"))
 		{
@@ -92,7 +94,7 @@ public class PlayerMove : MonoBehaviour
 		}
 	}*/
 
-	private void OnTriggerEnter2D(Collider2D collision)
+    private void OnTriggerEnter2D(Collider2D collision)
 	{
 		if (collision.CompareTag("Ground"))
 		{
