@@ -674,9 +674,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cf54d6da17623174cbdecedc3647ebb2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  playerName: PlayerNameTest
   currentStage: 1-1
   currentRank: 0
-  currentGold: 0
+  currentGold: 10
   playerMove: {fileID: 492314293}
   cameraHandler: {fileID: 519420033}
 --- !u!1001 &74829101
@@ -91281,7 +91282,7 @@ MonoBehaviour:
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
           m_IntArgument: 0
           m_FloatArgument: 0
-          m_StringArgument: StageSelectScene
+          m_StringArgument: 1-1 1
           m_BoolArgument: 0
         m_CallState: 2
       - m_Target: {fileID: 73927566}

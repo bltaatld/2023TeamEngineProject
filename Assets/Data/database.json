@@ -1,7 +1,16 @@
-[
-  {
-    "clearStage": "1-1",
-    "rank": 0,
-    "gold": 40
+{
+  "stageInfo": [
+    {
+      "clearStage": "1-1",
+      "rank": 0
+    },
+    {
+      "clearStage": "1-3",
+      "rank": 0
+    }
+  ],
+  "playerInfo": {
+    "playerName": "PlayerNameTest",
+    "playerGold": 110
   }
-]
+}

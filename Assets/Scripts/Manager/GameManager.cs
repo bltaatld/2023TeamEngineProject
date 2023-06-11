@@ -22,7 +22,7 @@ public class GameManager : MonoBehaviour
 
     public void AddInfo()
     {
-        SavePlayerInfo.instance.AddPlayerInfo(currentStage, currentRank, currentGold);
+        SavePlayerInfo.instance.AddPlayerInfo(currentStage , currentRank, currentGold);
     }
 
     public void SaveInfo()

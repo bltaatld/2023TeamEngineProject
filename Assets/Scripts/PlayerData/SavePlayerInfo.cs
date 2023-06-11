@@ -6,17 +6,33 @@ using System.IO;
 using Newtonsoft.Json;
 
 [System.Serializable]
-public class PlayerInfo
+public class GameInfo
+{
+    public PlayerInfo playerInfo;
+    public StageInfo[] stageInfo;
+}
+
+
+[System.Serializable]
+public class StageInfo
 {
     public string clearStage;
     public int rank;
-    public int gold;
+}
+
+[System.Serializable]
+public class PlayerInfo
+{
+    public string playerName;
+    public int playerGold;
 }
 
 public class SavePlayerInfo : MonoBehaviour
 {
     public static SavePlayerInfo instance;
-    public PlayerInfo[] playerInfo;
+    public GameInfo gameInfo;
+    public StageInfo[] stageInfos;
+    public PlayerInfo playerInfo;
 
     private string savePath;
 
@@ -34,41 +50,51 @@ public class SavePlayerInfo : MonoBehaviour
         }
 
         savePath = Path.Combine(Application.dataPath + "/Data/", "database.json");
+        Debug.Log(savePath);
         LoadPlayerInfoFromJson();
     }
 
     public void AddPlayerInfo(string stage, int rank, int gold)
     {
         // Check for duplicates
-        for (int i = 0; i < playerInfo.Length; i++)
+        for (int i = 0; i < stageInfos.Length; i++)
         {
-            if (playerInfo[i].clearStage == stage)
+            if (stageInfos[i].clearStage == stage)
             {
                 // Duplicate found, update the existing entry
-                playerInfo[i].rank = rank;
-                playerInfo[i].gold = gold;
+                stageInfos[i].rank = rank;
                 SavePlayerInfoToJson();
                 return;
             }
         }
 
         // No duplicate found, create a new PlayerInfo object and add it to the array
-        PlayerInfo newPlayer = new PlayerInfo();
+        StageInfo newPlayer = new StageInfo();
         newPlayer.clearStage = stage;
         newPlayer.rank = rank;
-        newPlayer.gold = gold;
 
-        Array.Resize(ref playerInfo, playerInfo.Length + 1);
-        playerInfo[playerInfo.Length - 1] = newPlayer;
+        playerInfo.playerGold += gold;
+
+        Array.Resize(ref stageInfos, stageInfos.Length + 1);
+        stageInfos[stageInfos.Length - 1] = newPlayer;
 
         SavePlayerInfoToJson();
     }
 
     public void SavePlayerInfoToJson()
     {
+        gameInfo.stageInfo = new StageInfo[stageInfos.Length];
+
+        for (int i = 0; i < stageInfos.Length; i++)
+        {
+            gameInfo.stageInfo[i] = stageInfos[i];
+        }
+
+        gameInfo.playerInfo = playerInfo;
+
         try
         {
-            string json = JsonConvert.SerializeObject(playerInfo, Formatting.Indented);
+            string json = JsonConvert.SerializeObject(gameInfo, Formatting.Indented);
             File.WriteAllText(savePath, json);
         }
         catch (Exception e)
@@ -86,24 +112,24 @@ public class SavePlayerInfo : MonoBehaviour
                 string json = File.ReadAllText(savePath);
                 if (!string.IsNullOrEmpty(json))
                 {
-                    playerInfo = JsonConvert.DeserializeObject<PlayerInfo[]>(json);
+                    gameInfo = JsonConvert.DeserializeObject<GameInfo>(json);
                 }
                 else
                 {
-                    Debug.LogWarning("Saved JSON file is empty.");
-                    playerInfo = new PlayerInfo[0];
+                    Debug.Log("Saved JSON file is empty.");
+                    gameInfo = new GameInfo();
                 }
             }
             catch (Exception e)
             {
-                Debug.LogError("Failed to load player info from JSON: " + e.Message);
-                playerInfo = new PlayerInfo[0];
+                Debug.Log("Failed to load player info from JSON: " + e.Message);
+                gameInfo = new GameInfo();
             }
         }
         else
         {
-            Debug.LogWarning("Saved JSON file does not exist.");
-            playerInfo = new PlayerInfo[0];
+            Debug.Log("Saved JSON file does not exist.");
+            gameInfo = new GameInfo();
         }
     }
 }
