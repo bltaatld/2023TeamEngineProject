@@ -4,9 +4,11 @@ using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
 using System.Linq;
+using System;
 
 public class StageButton : MonoBehaviour
 {
+    [SerializeField] private int chapterNum;
     [SerializeField] private int stageNum = -1;
     [SerializeField] private bool isUnlocked = false;
     [SerializeField] private Sprite[] buttonSprites = new Sprite[3];
@@ -23,7 +25,7 @@ public class StageButton : MonoBehaviour
         }
 
         m_stageNum = this.transform.GetChild(0).GetComponent<TextMeshProUGUI>();
-        m_stageNum.text = stageNum.ToString();
+        m_stageNum.text = $"{chapterNum}-{stageNum}";
 
         m_seaweedParent = this.transform.GetChild(1).gameObject;
 
@@ -46,10 +48,7 @@ public class StageButton : MonoBehaviour
         Button thisButton = this.GetComponent<Button>();
         Image thisImage = this.GetComponent<Image>();
 
-        //if(stage is locked)
-        //button.interactable = false;
-        //image = images[0];
-        //return;
+        //can't play stage
         if (!isUnlocked)
         {
             thisButton.interactable = false;
@@ -58,20 +57,18 @@ public class StageButton : MonoBehaviour
             return;
         }
 
-        //if(button.interatable == false)
-        //button.interactable = true;
+        //can play but its button's interactable is false
         if (!thisButton.interactable)
         {
             thisButton.interactable = true;
         }
 
-        //if(stage has been cleared)
-        //  if(next stage is locked) nextStage.isUnlocked = true; nextStage.UpdateButton();
-        //image = images[1];
-        //m_seaweedParent.UpdateRecord();
-        //return;
-        if(true/*수정 필요*/)
+        //int index = Array.IndexOf(SavePlayerInfo.instance.stageInfos, m_stageNum.text);
+        int index = FindIndex();
+        //this stage has already been cleared
+        if (index != -1 && SavePlayerInfo.instance.stageInfos[index].rank != 0)
         {
+            //this stage is cleared but can't play next stage
             if (this.stageNum < this.transform.parent.childCount && !this.transform.parent.GetChild(stageNum).GetComponent<StageButton>().isUnlocked)
             {
                 StageButton nextStage = this.transform.parent.GetChild(stageNum).GetComponent<StageButton>();
@@ -80,12 +77,15 @@ public class StageButton : MonoBehaviour
             }
             thisImage.sprite = buttonSprites[1];
             m_seaweedParent.SetActive(true);
-            m_seaweedParent.GetComponent<SeaweedRecordSystem>().SetRecord();
+            m_seaweedParent.GetComponent<SeaweedRecordSystem>().SetRecord(m_stageNum.text, index);
             return;
         }
+        //else if (SavePlayerInfo.instance.stageInfos[index].rank == 0)
+        //{
+        //    m_seaweedParent.GetComponent<SeaweedRecordSystem>().SetRecord(m_stageNum.text, index);
+        //}
 
-        //image = images[2];
-        //return;
+        //can play
         thisImage.sprite = buttonSprites[2];
         m_seaweedParent.SetActive(false);
         return;
@@ -95,6 +95,18 @@ public class StageButton : MonoBehaviour
     public void OpenPopup()
     {
         m_Popup.SetActive(true);
-        m_Popup.GetComponent<StageStartPopup>().SetPopup(stageNum);
+        m_Popup.GetComponent<StageStartPopup>().SetPopup(m_stageNum.text);
+    }
+
+    private int FindIndex()
+    {
+        for(int i = 0; i < SavePlayerInfo.instance.stageInfos.Length; i++)
+        {
+            if (SavePlayerInfo.instance.stageInfos[i].clearStage == m_stageNum.text)
+            {
+                return i;
+            }
+        }
+        return -1;
     }
 }
