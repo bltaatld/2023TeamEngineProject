@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -18,9 +19,38 @@ public class SeaweedRecordSystem : MonoBehaviour
         }
     }
 
-    public void SetRecord()
+    public void SetRecord(string stageName, int index)
     {
-        //stageRecord저장 방법 회의 필요?
-        Debug.Log("미역(별)시스템정비중입니다...");
+        if(index == -1)
+        {
+            Debug.LogError("Record Error");
+            return;
+        }
+
+        int record = SavePlayerInfo.instance.stageInfos[index].rank;
+
+        if(record == 1)
+        {
+            seaweeds[0].GetComponent<Image>().sprite = cleareds[0];
+            seaweeds[1].GetComponent<Image>().sprite = uncleareds[1];
+            seaweeds[2].GetComponent<Image>().sprite = uncleareds[2];
+        }
+        else if (record == 2)
+        {
+            seaweeds[0].GetComponent<Image>().sprite = cleareds[0];
+            seaweeds[1].GetComponent<Image>().sprite = cleareds[1];
+            seaweeds[2].GetComponent<Image>().sprite = uncleareds[2];
+        }
+        else if (record == 3)
+        {
+            seaweeds[0].GetComponent<Image>().sprite = cleareds[0];
+            seaweeds[1].GetComponent<Image>().sprite = cleareds[1];
+            seaweeds[2].GetComponent<Image>().sprite = cleareds[2];
+        }
+        else
+        {
+            Debug.LogError($"Record Info Error : index == {index}");
+            return;
+        }
     }
 }

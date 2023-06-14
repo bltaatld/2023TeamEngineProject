@@ -10,73 +10,94 @@ namespace stageSelectScene{
         [SerializeField] private TextMeshProUGUI m_coin;
         [SerializeField] private TextMeshProUGUI m_heart;
 
+        private SaveAPSystem apSaveSystem;
         private float standardTime = 5f * 60;
         private float timer;
 
-        private void Awake()
+        //private void Awake()
+        //{
+        //    SetAP();
+        //}
+
+        private void Start()
         {
-            //PlayerPrefs.DeleteAll();
-            //Debug.LogError("Pause");
-
-            if (PlayerPrefs.HasKey("HeartTimer"))
-            {
-                timer = PlayerPrefs.GetFloat("HeartTimer");
-            }
-            else
-            {
-                timer = 0f;
-            }
-
-            if (!PlayerPrefs.HasKey("CurrentHeart"))
-            {
-                PlayerPrefs.SetInt("CurrentHeart", 5);
-            }
-
-            if (PlayerPrefs.HasKey("ExitTime"))
-            {
-                //PlayerPrefs.SetString("AwakeTime", DateTime.Now.ToString("yyyyMMddHHmmss"));
-                TimeSpan offlineTime = DateTime.Now - Convert.ToDateTime(PlayerPrefs.GetString("ExitTime"));
-                //float a = (float)offlineTime.TotalSeconds;
-                PlayerPrefs.SetFloat("HeartTimer", (float)offlineTime.TotalSeconds);
-                for (; PlayerPrefs.GetFloat("HeartTimer") >= standardTime;)
-                {
-                    if (PlayerPrefs.GetInt("CurrentHeart") >= 5)
-                    {
-                        timer = 0;
-                        break;
-                    }
-                    PlayerPrefs.SetFloat("HeartTimer", PlayerPrefs.GetFloat("HeartTimer") - standardTime);
-                    PlayerPrefs.SetInt("CurrentHeart", PlayerPrefs.GetInt("CurrentHeart") + 1);
-                }
-            }
+            apSaveSystem = this.gameObject.GetComponent<SaveAPSystem>();
+            apSaveSystem.LoadFromJson();
+            SetAP();
+            m_heart.text = $"{apSaveSystem.apInfo.currentHeart} / 5";
         }
 
         private void Update()
         {
-            //CoinUpdate();
+            CoinUpdate();
             HeartUpdate();
+        }
+
+        private void OnApplicationQuit()
+        {
+            SetExitMode();
         }
 
         private void CoinUpdate()
         {
-            //최준이 게임매니저를 만든다 하였다
+            int tempCoin;
+            if(!int.TryParse(m_coin.text, out tempCoin))
+            {
+                Debug.LogError("CoinSystemError");
+            }
+            if(tempCoin != SavePlayerInfo.instance.playerInfo.playerGold)
+            {
+                m_coin.text = SavePlayerInfo.instance.playerInfo.playerGold.ToString();
+            }
         }
 
         private void HeartUpdate()
         {
-            if(PlayerPrefs.GetInt("CurrentHeart") >= 5)
+            if(apSaveSystem.apInfo.currentHeart >= 5)
             {
                 return;
             }
             if(timer >= standardTime)
             {
-                PlayerPrefs.SetInt("CurrentHeart", PlayerPrefs.GetInt("CurrentHeart") + 1);
+                apSaveSystem.apInfo.currentHeart++;
+                m_heart.text = $"{apSaveSystem.apInfo.currentHeart} / 5";
                 timer = 0;
             }
-
-            m_heart.text = $"{PlayerPrefs.GetInt("CurrentHeart")} / 5";
-
             timer += Time.deltaTime;
+        }
+
+        private void SetAP()
+        {
+            timer = apSaveSystem.apInfo.timer;
+
+            //if (!PlayerPrefs.HasKey("CurrentHeart"))
+            //{
+            //    PlayerPrefs.SetInt("CurrentHeart", 5);
+            //}
+
+            //if (PlayerPrefs.HasKey("ExitTime"))
+            if(apSaveSystem.apInfo.exitTime != null)
+            {
+                TimeSpan offlineTime = DateTime.Now - apSaveSystem.apInfo.exitTime;
+                apSaveSystem.apInfo.timer += (float)offlineTime.TotalSeconds;
+                for(; apSaveSystem.apInfo.timer >= standardTime;)
+                {
+                    if(apSaveSystem.apInfo.currentHeart >= 5)
+                    {
+                        timer = 0;
+                        break;
+                    }
+                    apSaveSystem.apInfo.timer -= standardTime;
+                    apSaveSystem.apInfo.currentHeart += 1;
+                }
+            }
+        }
+
+        public void SetExitMode()
+        {
+            apSaveSystem.apInfo.timer = timer;
+            apSaveSystem.apInfo.exitTime = DateTime.Now;
+            apSaveSystem.SaveToJson();
         }
     }
 }
