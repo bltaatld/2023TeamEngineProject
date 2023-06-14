@@ -9,6 +9,7 @@ namespace stageSelectScene{
     {
         [SerializeField] private TextMeshProUGUI m_coin;
         [SerializeField] private TextMeshProUGUI m_heart;
+        [SerializeField] private TextMeshProUGUI m_playerName;
 
         private SaveAPSystem apSaveSystem;
         private float standardTime = 5f * 60;
@@ -25,6 +26,7 @@ namespace stageSelectScene{
             apSaveSystem.LoadFromJson();
             SetAP();
             m_heart.text = $"{apSaveSystem.apInfo.currentHeart} / 5";
+            m_playerName.text = SavePlayerInfo.instance.playerInfo.playerName;
         }
 
         private void Update()

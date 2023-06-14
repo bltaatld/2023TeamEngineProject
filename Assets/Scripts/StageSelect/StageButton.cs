@@ -31,7 +31,7 @@ public class StageButton : MonoBehaviour
 
         m_Popup = GameObject.FindObjectOfType<StageStartPopup>(true).gameObject;
 
-        if(stageNum == 1)
+        if(stageNum == 1 && chapterNum == 1)
         {
             isUnlocked = true;
         }
