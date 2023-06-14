@@ -8,8 +8,13 @@ using UnityEngine.EventSystems;
 
 public class PlayerMove : MonoBehaviour
 {
-	public Transform weed;
-	public float speed;
+	public bool isWeedGrow;
+	public bool isWeedEnd;
+	public GameObject weedPrefab;
+	public GameObject rotateObject;
+
+    public float maxSpeed;
+	public float currentSpeed;
 	public float distanceFromWall = 0.1f;
 	public LayerMask wallLayer;
 	public float moveDuration = 3f;
@@ -22,21 +27,30 @@ public class PlayerMove : MonoBehaviour
 	private Vector2 targetPosition;
 	private Vector2 startPosition;
 
-	void Update()
-	{
-		transform.Rotate(Vector3.back * speed * Time.deltaTime);
-		if (Input.touchCount > 0)
-		{
-			Touch touch = Input.GetTouch(0);
+    private void Start()
+    {
+        currentSpeed = maxSpeed;
+    }
 
-			// 첫 번째 터치 입력을 확인하고, UI 버튼을 클릭하지 않았을 때 함수를 작동합니다.
-			if (touch.phase == TouchPhase.Began && !isButtonPressed && !isMoving && !CanMove && !EventSystem.current.IsPointerOverGameObject(touch.fingerId))
-			{
-                Camera.main.orthographicSize = 40f;
-                isMoving = true;
+    void Update()
+    {
+        transform.Rotate(Vector3.back * currentSpeed * Time.deltaTime);
+        if(Input.GetMouseButtonDown(0))
+        {
+            Camera.main.orthographicSize = 40f;
+            if (!isWeedEnd)
+                isWeedGrow = true;
+            currentSpeed = 0f;
+
+            if (isWeedEnd)
+            {
+                currentSpeed = maxSpeed;
+
+                Debug.Log("Move");
                 moveTimer = 0f;
                 startPosition = transform.position;
 
+                isMoving = true;
                 // 플레이어 회전 값
                 float playerAngle = transform.eulerAngles.z;
 
@@ -63,43 +77,56 @@ public class PlayerMove : MonoBehaviour
 
                 // 변경된 rotation 값을 적용합니다.
                 transform.rotation = currentRotation;
+                isWeedEnd = false;
             }
-		}
+        }
 
-		if (isMoving)
-		{
-			moveTimer += Time.deltaTime;
+        if (Input.touchCount > 0)
+        {
+            Touch touch = Input.GetTouch(0);
 
-			if (moveTimer <= moveDuration)
-			{
-				float t = moveTimer / moveDuration;
-				transform.position = Vector2.Lerp(startPosition, targetPosition, t);
-				curserRender.gameObject.SetActive(false);
-			}
-			else
-			{
-				isMoving = false;
-				curserRender.gameObject.SetActive(true);
-				GameManager.instance.cameraHandler.CenterCameraOnPlayerPosition();
+            // 첫 번째 터치 입력을 확인하고, UI 버튼을 클릭하지 않았을 때 함수를 작동합니다.
+            if (touch.phase == TouchPhase.Began && !isButtonPressed && !isMoving && !CanMove && !EventSystem.current.IsPointerOverGameObject(touch.fingerId))
+            {
             }
-		}
-	}
+        }
 
-    /*public void OnCollisionEnter2D(Collision2D collision)
-	{
-		if (collision.gameObject.CompareTag("Ground"))
-		{
-			Debug.Log("Hit");
-			speed *= -1f;
-		}
-	}*/
+        if (isMoving)
+        {
+            moveTimer += Time.deltaTime;
+
+            if (moveTimer <= moveDuration)
+            {
+                isWeedEnd = false;
+                float t = moveTimer / moveDuration;
+                transform.position = Vector2.Lerp(startPosition, targetPosition, t);
+                curserRender.gameObject.SetActive(false);
+            }
+            else
+            {
+                isMoving = false;
+                isWeedEnd = false;
+                curserRender.gameObject.SetActive(true);
+                GameManager.instance.cameraHandler.CenterCameraOnPlayerPosition();
+            }
+        }
+
+        if (isWeedGrow)
+        {
+            Quaternion rotation = transform.rotation;
+            rotation *= Quaternion.Euler(0f, 0f, -90f);
+            GameObject instance = Instantiate(weedPrefab, transform.position, rotation);
+            instance.transform.parent = rotateObject.transform;
+            isWeedGrow = false;
+        }
+    }
 
     private void OnTriggerEnter2D(Collider2D collision)
 	{
 		if (collision.CompareTag("Ground"))
 		{
 			Debug.Log("Hit");
-			speed *= -1f;
+            currentSpeed *= -1f;
 		}
 	}
 }

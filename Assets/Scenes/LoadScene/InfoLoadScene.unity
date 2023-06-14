@@ -168,7 +168,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   isStartActive: 1
-  startChangeName: 1-1
+  startChangeName: Load
 --- !u!1 &1084541541
 GameObject:
   m_ObjectHideFlags: 0
@@ -282,6 +282,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ae4fe2b55c641f143a423fd801a51ba2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  gameInfo:
+    playerInfo:
+      playerName: 
+      playerGold: 0
+    stageInfo: []
   stageInfos: []
   playerInfo:
     playerName: 
