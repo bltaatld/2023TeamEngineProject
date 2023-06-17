@@ -11,6 +11,8 @@ public class ThrowWeed : MonoBehaviour
 
     private void Update()
     {
+        GameManager.instance.playerMove.weedGage -= scaleSpeed * Time.deltaTime;
+
         // Box Collider 2D Offset Y °ª Áõ°¡
         Vector2 offset = boxCollider.offset;
         offset.y += scaleSpeed * Time.deltaTime;
@@ -27,6 +29,7 @@ public class ThrowWeed : MonoBehaviour
         if (collision.gameObject.CompareTag("Ground"))
         {
             scaleSpeed = 0f;
+            GameManager.instance.rankValue += spriteRenderer.size.y;
             GameManager.instance.playerMove.isWeedEnd = true;
         }
     }

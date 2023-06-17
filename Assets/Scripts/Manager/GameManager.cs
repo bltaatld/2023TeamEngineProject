@@ -3,6 +3,9 @@ using System.Collections;
 using System.Collections.Generic;
 using Unity.VisualScripting;
 using UnityEngine;
+using UnityEngine.SceneManagement;
+using TMPro;
+using UnityEngine.SocialPlatforms;
 
 public class GameManager : MonoBehaviour
 {
@@ -14,10 +17,16 @@ public class GameManager : MonoBehaviour
 
     public PlayerMove playerMove;
     public CameraHandler cameraHandler;
+    public TextMeshProUGUI timerText;
+
+    public float gameTime;
+    public float timeRemaining = 900f;
+    public float rankValue;
 
     public void Awake()
     {
         instance = this;
+        DontDestroyOnLoad(gameObject);
     }
 
     public void AddInfo()
@@ -28,5 +37,40 @@ public class GameManager : MonoBehaviour
     public void SaveInfo()
     {
         SavePlayerInfo.instance.SavePlayerInfoToJson();
+    }
+
+    private void Update()
+    {
+        timeRemaining -= Time.deltaTime;
+        
+        if (rankValue >= 50)
+        {
+            currentRank = 1;
+        }
+
+        if (rankValue >= 100)
+        {
+            currentRank = 2;
+        }
+
+        if (rankValue >= 200)
+        {
+            currentRank = 3;
+        }
+
+        if (timeRemaining > 0)
+        {
+            timeRemaining -= Time.deltaTime;
+            int minutes = Mathf.FloorToInt(timeRemaining / 60f);
+            int seconds = Mathf.FloorToInt(timeRemaining - minutes * 60f);
+            timerText.text = string.Format("{0:0}:{1:00}", minutes, seconds);
+        }
+
+        else
+        {
+            AddInfo();
+            SaveInfo();
+            SceneManager.LoadScene("GameClearScene");
+        }
     }
 }

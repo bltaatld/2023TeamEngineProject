@@ -5,16 +5,17 @@ TagManager:
   serializedVersion: 2
   tags:
   - Ground
+  - Liqid
   layers:
   - Default
   - TransparentFX
   - Ignore Raycast
-  - 
+  - Fish
   - Water
   - UI
   - Wall
   - Liquid
-  - 
+  - Gage
   - 
   - 
   - 
