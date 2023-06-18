@@ -104,7 +104,8 @@ namespace stageSelectScene{
 
         public bool CanUseCoin(int standard)
         {
-            return standard >= Int32.Parse(m_coin.text);
+            Debug.Log(Int32.Parse(m_coin.text));
+            return standard <= Int32.Parse(m_coin.text);
         }
 
         public void ReduceCoin(int coin)

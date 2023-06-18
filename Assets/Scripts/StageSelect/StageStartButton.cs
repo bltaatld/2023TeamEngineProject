@@ -24,6 +24,11 @@ public class StageStartButton : MonoBehaviour
             if (item.isSelected)
             {
                 uiManager.GetComponent<UIManager>().ReduceCoin(item.expend);
+                PlayerPrefs.SetInt(item.gameObject.transform.parent.name, 1);
+            }
+            else
+            {
+                PlayerPrefs.SetInt(item.gameObject.transform.parent.name, 0);
             }
         }
         uiManager.GetComponent<SaveAPSystem>().apInfo.currentHeart--;

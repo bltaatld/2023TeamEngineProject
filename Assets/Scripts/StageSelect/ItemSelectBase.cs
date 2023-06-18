@@ -22,7 +22,7 @@ public class ItemSelectBase : MonoBehaviour
         selectLine.SetActive(isSelected);
     }
 
-    public virtual void SelectItem()
+    public void SelectItem()
     {
         if (isSelected)
         {
