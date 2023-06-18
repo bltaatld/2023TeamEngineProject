@@ -20,30 +20,35 @@ public class PopupOff : MonoBehaviour, IPointerClickHandler
     {
         int clickCount = eventData.clickCount;
         GameObject popup = this.transform.GetChild(_popupIndex).gameObject;
-        Debug.Log(popup.name);
+        //Debug.Log(popup.name);
         Vector3 popupPos = popup.GetComponent<RectTransform>().anchoredPosition;
         Vector2 popupSize = popup.GetComponent<RectTransform>().sizeDelta;
         Vector3 mousePos = /*Camera.main.ScreenToWorldPoint*/(new Vector3(Input.mousePosition.x - Screen.width / 2, Input.mousePosition.y - Screen.height / 2, 0));
 
-        Debug.Log($"Popup Off Clicked From : {transform.name}"); 
+        //Debug.Log($"Popup Off Clicked From : {transform.name}"); 
         if(!(mousePos.x >= popupPos.x - popupSize.x / 2 && mousePos.x <= popupPos.x + popupSize.x / 2
             && mousePos.y >= popupPos.y - popupSize.y / 2 && mousePos.y <= popupPos.y + popupSize.y / 2)
             && clickCount == 1)
         {
-            Debug.Log($"Popup Success From: {transform.name}");
+            //Debug.Log($"Popup Success From: {transform.name}");
             StartCoroutine(StartCloseAnim());
         }
         else
         {
             Debug.Log($"Popup Failed From: {transform.name}");
-            Debug.Log(popupPos);
-            Debug.Log(mousePos);
-            Debug.Log($"mousePos.x >= popupPos.x - popupSize.x / 2 : {mousePos.x >= popupPos.x - popupSize.x / 2}");
-            Debug.Log($"mousePos.x <= popupPos.x + popupSize.x / 2 : {mousePos.x <= popupPos.x + popupSize.x / 2}");
-            Debug.Log($"mousePos.y >= popupPos.y - popupSize.y / 2 : {mousePos.y >= popupPos.y - popupSize.y / 2}");
-            Debug.Log($"mousePos.y <= popupPos.y + popupSize.y / 2 : {mousePos.y <= popupPos.y + popupSize.y / 2}");
-            Debug.Log($"clickCount = {clickCount}");
+            //Debug.Log(popupPos);
+            //Debug.Log(mousePos);
+            //Debug.Log($"mousePos.x >= popupPos.x - popupSize.x / 2 : {mousePos.x >= popupPos.x - popupSize.x / 2}");
+            //Debug.Log($"mousePos.x <= popupPos.x + popupSize.x / 2 : {mousePos.x <= popupPos.x + popupSize.x / 2}");
+            //Debug.Log($"mousePos.y >= popupPos.y - popupSize.y / 2 : {mousePos.y >= popupPos.y - popupSize.y / 2}");
+            //Debug.Log($"mousePos.y <= popupPos.y + popupSize.y / 2 : {mousePos.y <= popupPos.y + popupSize.y / 2}");
+            //Debug.Log($"clickCount = {clickCount}");
         }
+    }
+
+    public void ClickXButton()
+    {
+        StartCoroutine(StartCloseAnim());
     }
 
     private IEnumerator StartCloseAnim()

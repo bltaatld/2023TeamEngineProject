@@ -1,27 +1,31 @@
+using stageSelectScene;
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 using UnityEngine.SceneManagement;
-using TMPro;
-using System;
-using stageSelectScene;
 
-public class StageStartPopup : MonoBehaviour
+public class StageStartButton : MonoBehaviour
 {
     [HideInInspector] public string tempStage;
-    [SerializeField] private TextMeshProUGUI[] texts = new TextMeshProUGUI[2];
-
+    [SerializeField] private TextMeshProUGUI stageText;
+    [SerializeField] private ItemSelectBase[] itemButtons = new ItemSelectBase[2];
     public void SetPopup(string stageNum)
     {
         tempStage = stageNum;
 
-        texts[0].text = $"STAGE {tempStage}";
-        //texts[1].text = script in Dictionary with index-tempStage;
+        stageText.text = $"STAGE {tempStage}";
     }
-
     public void StartStage()
     {
         GameObject uiManager = GameObject.Find("UIDirector");
+        foreach(var item in itemButtons)
+        {
+            if (item.isSelected)
+            {
+                uiManager.GetComponent<UIManager>().ReduceCoin(item.expend);
+            }
+        }
         uiManager.GetComponent<SaveAPSystem>().apInfo.currentHeart--;
         uiManager.GetComponent<UIManager>().SetExitMode();
         SceneManager.LoadScene(tempStage);
