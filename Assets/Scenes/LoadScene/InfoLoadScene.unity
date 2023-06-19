@@ -168,7 +168,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   isStartActive: 1
-  startChangeName: StageSelectScene
+  startChangeName: TitleScene
 --- !u!1 &1084541541
 GameObject:
   m_ObjectHideFlags: 0
