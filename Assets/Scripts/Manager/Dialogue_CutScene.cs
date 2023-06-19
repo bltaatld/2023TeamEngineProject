@@ -3,11 +3,12 @@ using System.Collections;
 using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
-using UnityEngine.SceneManagement;
 
 public class Dialogue_CutScene : MonoBehaviour
 {
     public TextMeshProUGUI textComponent;
+    public GameObject textObject;
+
     public string[] lines;
     public float textSpeed;
     public float clickSpeed;
@@ -23,14 +24,14 @@ public class Dialogue_CutScene : MonoBehaviour
     {
         startDialogue();
         textComponent.text = string.Empty;
+        GameManager.instance.isStart = false;
         Check = false;
     }
 
     // Update is called once per frame
     void Update()
     {
-        elapsedTime += Time.deltaTime;
-        if (elapsedTime >= currentDelayTime)
+        if (Input.GetMouseButtonDown(0))
         {
             if (textComponent.text == lines[index])
             {
@@ -84,7 +85,8 @@ public class Dialogue_CutScene : MonoBehaviour
             index = 0;
             Check = true;
             Debug.Log("Text Ended");
-            SceneManager.LoadScene(GameManager.instance.currentStage);
+            textObject.SetActive(false);
+            GameManager.instance.isStart = true;
         }
     }
 }

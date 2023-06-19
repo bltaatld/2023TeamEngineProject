@@ -19,7 +19,7 @@ public class PlayerNameSet : MonoBehaviour
         }
         SavePlayerInfo.instance.playerInfo.playerName = playerName;
         popup.SetActive(false);
-        SceneManager.LoadScene("StageSelectScene");
+        Loader.LoadScene("StageSelectScene");
         return;
     }
 }

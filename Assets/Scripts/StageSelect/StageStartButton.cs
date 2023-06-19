@@ -33,6 +33,6 @@ public class StageStartButton : MonoBehaviour
         }
         uiManager.GetComponent<SaveAPSystem>().apInfo.currentHeart--;
         uiManager.GetComponent<UIManager>().SetExitMode();
-        SceneManager.LoadScene(tempStage);
+        Loader.LoadScene(tempStage);
     }
 }

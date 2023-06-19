@@ -14,7 +14,7 @@ public class TitleButtonAction : MonoBehaviour
             nameSelect.SetActive(true);
             return;
         }
-        SceneManager.LoadScene("StageSelectScene");
+        Loader.LoadScene("StageSelectScene");
     }
 
     public void OpenOption()

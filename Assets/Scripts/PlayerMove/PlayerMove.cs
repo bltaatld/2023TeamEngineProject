@@ -26,6 +26,7 @@ public class PlayerMove : MonoBehaviour
     public LayerMask wallLayer;
     public SpriteRenderer curserRender;
     public GameObject gageRender;
+    public Animator anim;
 
     private bool isButtonPressed = false;
 	private Vector2 targetPosition;
@@ -61,7 +62,6 @@ public class PlayerMove : MonoBehaviour
                     {
                         currentSpeed = maxSpeed;
 
-                        Debug.Log("Move");
                         moveTimer = 0f;
                         startPosition = transform.position;
 
@@ -106,8 +106,10 @@ public class PlayerMove : MonoBehaviour
             if (moveTimer <= moveDuration)
             {
                 isWeedEnd = false;
+                currentSpeed = 0f;
                 float t = moveTimer / moveDuration;
                 transform.position = Vector2.Lerp(startPosition, targetPosition, t);
+                anim.SetBool("IsMove", true);
                 curserRender.gameObject.SetActive(false);
                 gageRender.SetActive(false);
             }
@@ -115,6 +117,8 @@ public class PlayerMove : MonoBehaviour
             {
                 isMoving = false;
                 isWeedEnd = false;
+                currentSpeed = maxSpeed;
+                anim.SetBool("IsMove", false);
                 curserRender.gameObject.SetActive(true);
                 gageRender.SetActive(true);
                 GameManager.instance.cameraHandler.CenterCameraOnPlayerPosition();
@@ -135,7 +139,6 @@ public class PlayerMove : MonoBehaviour
 	{
 		if (collision.CompareTag("Ground"))
 		{
-			Debug.Log("Hit");
             currentSpeed *= -1f;
 		}
 	}

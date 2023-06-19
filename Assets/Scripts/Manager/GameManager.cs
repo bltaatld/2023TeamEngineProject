@@ -14,6 +14,7 @@ public class GameManager : MonoBehaviour
     public string currentStage;
     public int currentRank;
     public int currentGold;
+    public bool isStart;
 
     public PlayerMove playerMove;
     public CameraHandler cameraHandler;
@@ -41,7 +42,6 @@ public class GameManager : MonoBehaviour
 
     private void Update()
     {
-        timeRemaining -= Time.deltaTime;
         
         if (rankValue >= 50)
         {
@@ -58,7 +58,7 @@ public class GameManager : MonoBehaviour
             currentRank = 3;
         }
 
-        if (timeRemaining > 0)
+        if (timeRemaining > 0 && isStart)
         {
             timeRemaining -= Time.deltaTime;
             int minutes = Mathf.FloorToInt(timeRemaining / 60f);
@@ -66,7 +66,7 @@ public class GameManager : MonoBehaviour
             timerText.text = string.Format("{0:0}:{1:00}", minutes, seconds);
         }
 
-        else
+        if(timeRemaining == 0 && isStart)
         {
             AddInfo();
             SaveInfo();

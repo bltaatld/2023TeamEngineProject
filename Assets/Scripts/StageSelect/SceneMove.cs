@@ -14,6 +14,6 @@ public class SceneMove : MonoBehaviour
         GameObject uiManager = GameObject.Find("UIDirector");
         uiManager.GetComponent<UIManager>().SetExitMode();
 
-        SceneManager.LoadScene(sceneName);
+        Loader.LoadScene(sceneName);
     }
 }
