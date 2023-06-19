@@ -12,6 +12,11 @@ public class StageStartButton : MonoBehaviour
     [SerializeField] private ItemSelectBase[] itemButtons = new ItemSelectBase[2];
     public void SetPopup(string stageNum)
     {
+        foreach(var item in itemButtons)
+        {
+            item.InitPopup();
+        }
+
         tempStage = stageNum;
 
         stageText.text = $"STAGE {tempStage}";
