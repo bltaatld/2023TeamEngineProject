@@ -864,7 +864,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Seaweed?
+  m_text: SEAWEED
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 16feee44c5d67f849b63df9bdc7a2c47, type: 2}
   m_sharedMaterial: {fileID: 3356954843313175034, guid: 16feee44c5d67f849b63df9bdc7a2c47, type: 2}
@@ -2808,7 +2808,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: MAN?
+  m_text: MAN
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 16feee44c5d67f849b63df9bdc7a2c47, type: 2}
   m_sharedMaterial: {fileID: 3356954843313175034, guid: 16feee44c5d67f849b63df9bdc7a2c47, type: 2}

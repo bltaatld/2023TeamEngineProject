@@ -1,3 +1,4 @@
+using stageSelectScene;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -10,6 +11,9 @@ public class SceneMove : MonoBehaviour
 
     public void MoveScene()
     {
+        GameObject uiManager = GameObject.Find("UIDirector");
+        uiManager.GetComponent<UIManager>().SetExitMode();
+
         SceneManager.LoadScene(sceneName);
     }
 }

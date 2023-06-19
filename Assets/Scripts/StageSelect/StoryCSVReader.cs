@@ -39,7 +39,8 @@ public class StoryCSVReader : MonoBehaviour
                 fields[j] = fields[j].TrimStart(' ', '"');
                 fields[j] = fields[j].TrimEnd('"');
             }
-            if (!storyDatas.TryAdd(fields[0], new string[] { fields[1], fields[2] }))
+
+            if (!file.EndOfStream && !storyDatas.TryAdd(fields[0], new string[] { fields[1], fields[2] }))
             {
                 Debug.LogError("Fail to Parse Stroy");
             }
