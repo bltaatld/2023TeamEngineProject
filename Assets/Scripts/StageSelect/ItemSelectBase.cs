@@ -18,8 +18,7 @@ public class ItemSelectBase : MonoBehaviour
 
     private void Start()
     {
-        isSelected = false;
-        selectLine.SetActive(isSelected);
+        InitPopup();
     }
 
     public void SelectItem()
@@ -33,6 +32,13 @@ public class ItemSelectBase : MonoBehaviour
             isSelected = true;
         }
 
+        selectLine.SetActive(isSelected);
+    }
+
+    public void InitPopup()
+    {
+        Debug.Log("Start Init");
+        isSelected = false;
         selectLine.SetActive(isSelected);
     }
 }

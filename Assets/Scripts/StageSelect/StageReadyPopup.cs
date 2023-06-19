@@ -11,6 +11,7 @@ public class StageReadyPopup : MonoBehaviour
     [HideInInspector] public string tempStage;
     [SerializeField] private TextMeshProUGUI[] texts = new TextMeshProUGUI[2];
     [SerializeField] private GameObject startPopup;
+    [SerializeField] private ItemSelectBase[] itemButtons = new ItemSelectBase[2];
 
     public void SetPopup(string stageNum)
     {
@@ -31,6 +32,10 @@ public class StageReadyPopup : MonoBehaviour
     public void ReadyStage()
     {
         startPopup.SetActive(true);
+        foreach(var item in itemButtons)
+        {
+            item.InitPopup();
+        }
         startPopup.GetComponent<StageStartButton>().SetPopup(tempStage);
     }
 }
