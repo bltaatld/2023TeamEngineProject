@@ -29,7 +29,7 @@ public class StageButton : MonoBehaviour
 
         m_seaweedParent = this.transform.GetChild(1).gameObject;
 
-        m_Popup = GameObject.FindObjectOfType<StageStartPopup>(true).gameObject;
+        m_Popup = GameObject.FindObjectOfType<StageReadyPopup>(true).gameObject;
 
         if(stageNum == 1 && chapterNum == 1)
         {
@@ -95,7 +95,7 @@ public class StageButton : MonoBehaviour
     public void OpenPopup()
     {
         m_Popup.SetActive(true);
-        m_Popup.GetComponent<StageStartPopup>().SetPopup(m_stageNum.text);
+        m_Popup.GetComponent<StageReadyPopup>().SetPopup(m_stageNum.text);
     }
 
     private int FindIndex()

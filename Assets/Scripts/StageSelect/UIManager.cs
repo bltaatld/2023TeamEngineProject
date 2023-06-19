@@ -101,5 +101,17 @@ namespace stageSelectScene{
             apSaveSystem.apInfo.exitTime = DateTime.Now;
             apSaveSystem.SaveToJson();
         }
+
+        public bool CanUseCoin(int standard)
+        {
+            Debug.Log(Int32.Parse(m_coin.text));
+            return standard <= Int32.Parse(m_coin.text);
+        }
+
+        public void ReduceCoin(int coin)
+        {
+            Int32 tempCoin = Int32.Parse(m_coin.text);
+            m_coin.text = $"{tempCoin - coin}";
+        }
     }
 }
