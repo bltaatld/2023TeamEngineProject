@@ -148,6 +148,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   damage: 10
   heal: 0
-  maxLife: 0
+  maxLife: 3
   currentLife: 0
   isInWater: 0

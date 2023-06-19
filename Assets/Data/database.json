@@ -1,16 +1,12 @@
 {
   "playerInfo": {
     "playerName": "",
-    "playerGold": 30
+    "playerGold": 0
   },
   "stageInfo": [
     {
       "clearStage": "1-1",
       "rank": 2
-    },
-    {
-      "clearStage": "1-2",
-      "rank": 0
     }
   ]
 }

@@ -5,6 +5,7 @@ using UnityEngine;
 public class GyroTest : MonoBehaviour
 {
     public bool isGyroActive;
+    public GameObject cam;
     private Gyroscope gyro;
     private Quaternion initialRotation;
     private float zAngle;
@@ -38,6 +39,12 @@ public class GyroTest : MonoBehaviour
             // 오브젝트의 회전을 설정합니다.
             transform.rotation = Quaternion.Euler(0f, 0f, zAngle);
         }
+    }
+
+    public void ResetCameraPos()
+    {
+        cam.transform.position = new Vector3(0, 0, -30);
+        transform.position = new Vector3(0, 0, 10);
     }
 
     // 회전값을 초기화하는 함수
