@@ -30,7 +30,7 @@ public class SaveAPSystem : MonoBehaviour
         //        savePath = Application.dataPath + "/Data/";
         //#endif
 #if UNITY_ANDROID
-        savePath = Application.persistentDataPath/* + "/Data/"*/;
+        savePath = Application.persistentDataPath + "/Data/";
 #endif
         fileName = "APData.json";
         filePath = Path.Combine(savePath, fileName);

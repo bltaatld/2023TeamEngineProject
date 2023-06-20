@@ -49,7 +49,7 @@ public class SavePlayerInfo : MonoBehaviour
             return;
         }
 
-        savePath = Path.Combine(Application.dataPath + "/Data/", "database.json");
+        savePath = Path.Combine(Application.persistentDataPath + "/Data/", "database.json");
         Debug.Log(savePath);
         LoadPlayerInfoFromJson();
     }
