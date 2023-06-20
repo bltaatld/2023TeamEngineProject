@@ -48,8 +48,13 @@ public class SavePlayerInfo : MonoBehaviour
             Destroy(gameObject);
             return;
         }
-
+#if UNITY_ANDROID
         savePath = Path.Combine(Application.persistentDataPath + "/Data/", "database.json");
+#endif
+
+#if UNITY_EDITOR
+        savePath = Path.Combine(Application.dataPath + "/Data/", "database.json");
+#endif
         Debug.Log(savePath);
         LoadPlayerInfoFromJson();
     }

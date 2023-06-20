@@ -18,6 +18,8 @@ public class StageStartButton : MonoBehaviour
     }
     public void StartStage()
     {
+        Debug.Log(tempStage);
+
         GameObject uiManager = GameObject.Find("UIDirector");
         foreach(var item in itemButtons)
         {

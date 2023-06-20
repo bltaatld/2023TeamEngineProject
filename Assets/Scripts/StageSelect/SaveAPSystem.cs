@@ -21,19 +21,18 @@ public class SaveAPSystem : MonoBehaviour
     private string fileName;
     private string filePath;
 
+    private StreamWriter sw;
+
     private void Awake()
     {
-#if UNITY_EDITOR
-        savePath = Application.dataPath + "/Data/";
-#endif
-        //#if UNITY_ANDROID
-        //        savePath = Application.dataPath + "/Data/";
-        //#endif
 #if UNITY_ANDROID
         savePath = Application.persistentDataPath + "/Data/";
 #endif
+#if UNITY_EDITOR
+        savePath = Application.dataPath + "/Data/";
+#endif
         fileName = "APData.json";
-        filePath = Path.Combine(savePath, fileName);
+        filePath = Path.Combine(savePath, "APData.json");
         LoadFromJson();
     }
 
@@ -44,49 +43,26 @@ public class SaveAPSystem : MonoBehaviour
 
     public void SaveToJson()
     {
-        if (!Directory.Exists(savePath))
-        {
-            Directory.CreateDirectory(savePath);
-        }
-        try
-        {
-            string ap = JsonUtility.ToJson(apInfo);
-            File.WriteAllText(filePath, ap);
-        }
-        catch (Exception e)
-        {
-            Debug.LogError($"Failed To Save AP Data by {e}");
-        }
+        string jsonData = JsonUtility.ToJson(apInfo);
+        File.WriteAllText(filePath, jsonData);
     }
 
-    public void LoadFromJson()
+    public SaveAPSystem LoadFromJson()
     {
-        if (File.Exists(filePath))
+        if (!File.Exists(filePath))
         {
-            try
-            {
-                string json = File.ReadAllText(filePath);
-                if (!string.IsNullOrEmpty(json))
-                {
-                    apInfo = JsonConvert.DeserializeObject<APInfo>(json);
-                }
-                else
-                {
-                    Debug.LogError("AP json is empty");
-                    apInfo = new APInfo();
-                }
-            }
-            catch (Exception e)
-            {
-                Debug.LogError($"Fail Load AP Data Json by {e}");
-                apInfo = new APInfo();
-            }
-        }
-        else
-        {
-            //Debug.LogError("AP Data Json isn't exist");
             apInfo = new APInfo();
             SaveToJson();
         }
+        string jsonData = File.ReadAllText(filePath);
+        if (string.IsNullOrEmpty(jsonData))
+        {
+            apInfo = new APInfo();
+            SaveToJson();
+            jsonData = File.ReadAllText(filePath);
+        }
+        apInfo = JsonUtility.FromJson<APInfo>(jsonData);
+
+        return this;
     }
 }
