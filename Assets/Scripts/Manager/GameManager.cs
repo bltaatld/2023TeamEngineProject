@@ -66,11 +66,11 @@ public class GameManager : MonoBehaviour
             timerText.text = string.Format("{0:0}:{1:00}", minutes, seconds);
         }
 
-        if(timeRemaining == 0 && isStart)
+        if(timeRemaining < 0 && isStart)
         {
             AddInfo();
             SaveInfo();
-            SceneManager.LoadScene("GameClearScene");
+            Loader.LoadScene("GameClearScene");
         }
     }
 }

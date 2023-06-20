@@ -1565,7 +1565,7 @@ MonoBehaviour:
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
           m_IntArgument: 0
           m_FloatArgument: 0
-          m_StringArgument: Load
+          m_StringArgument: StageSelectScene
           m_BoolArgument: 0
         m_CallState: 2
 --- !u!114 &917726689
