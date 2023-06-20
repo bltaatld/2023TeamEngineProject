@@ -5,7 +5,7 @@ using System.Collections.Generic;
 using System.IO;
 using UnityEngine;
 
-[Serializable]
+[System.Serializable]
 public class APInfo
 {
     public float timer = 0f;
@@ -24,7 +24,7 @@ public class SaveAPSystem : MonoBehaviour
     private void Awake()
     {
 #if UNITY_EDITOR
-        savePath = Application.persistentDataPath + "/Data/";
+        savePath = Application.dataPath + "/Data/";
 #endif
         //#if UNITY_ANDROID
         //        savePath = Application.dataPath + "/Data/";

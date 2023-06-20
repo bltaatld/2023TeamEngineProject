@@ -31,8 +31,11 @@ public class StageStartButton : MonoBehaviour
                 PlayerPrefs.SetInt(item.gameObject.transform.parent.name, 0);
             }
         }
-        uiManager.GetComponent<SaveAPSystem>().apInfo.currentHeart--;
-        uiManager.GetComponent<UIManager>().SetExitMode();
-        Loader.LoadScene(tempStage);
+        if (uiManager.GetComponent<SaveAPSystem>().apInfo.currentHeart > 0)
+        {
+            uiManager.GetComponent<SaveAPSystem>().apInfo.currentHeart--;
+            uiManager.GetComponent<UIManager>().SetExitMode();
+            Loader.LoadScene(tempStage);
+        }
     }
 }

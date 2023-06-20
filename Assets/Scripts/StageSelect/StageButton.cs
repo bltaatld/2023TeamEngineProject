@@ -21,7 +21,7 @@ public class StageButton : MonoBehaviour
     {
         if(stageNum == -1)
         {
-            stageNum = this.transform.GetSiblingIndex() + 1;
+            stageNum = this.transform.GetSiblingIndex();
         }
 
         m_stageNum = this.transform.GetChild(0).GetComponent<TextMeshProUGUI>();
@@ -66,12 +66,11 @@ public class StageButton : MonoBehaviour
         //int index = Array.IndexOf(SavePlayerInfo.instance.stageInfos, m_stageNum.text);
         int index = FindIndex();
         //this stage has already been cleared
-        if (index != -1 && SavePlayerInfo.instance.stageInfos[index].rank != 0)
+        if (index != -1 && SavePlayerInfo.instance.stageInfos[index].rank > 0)
         {
-            //this stage is cleared but can't play next stage
-            if (this.stageNum < this.transform.parent.childCount && !this.transform.parent.GetChild(stageNum).GetComponent<StageButton>().isUnlocked)
+            if (this.stageNum + 1 < this.transform.parent.childCount && !this.transform.parent.GetChild(stageNum + 1).GetComponent<StageButton>().isUnlocked)
             {
-                StageButton nextStage = this.transform.parent.GetChild(stageNum).GetComponent<StageButton>();
+                StageButton nextStage = this.transform.parent.GetChild(stageNum + 1).GetComponent<StageButton>();
                 nextStage.isUnlocked = true;
                 nextStage.UpdateButton();
             }
