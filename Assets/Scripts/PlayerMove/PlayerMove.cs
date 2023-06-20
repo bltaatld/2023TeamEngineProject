@@ -41,6 +41,11 @@ public class PlayerMove : MonoBehaviour
     {
         transform.Rotate(Vector3.back * currentSpeed * Time.deltaTime);
 
+        if (weedGage <= 0)
+        {
+            GameManager.instance.gameTime = 10f;
+        }
+
         if (Input.touchCount > 0)
         {
             Touch touch = Input.GetTouch(0);
