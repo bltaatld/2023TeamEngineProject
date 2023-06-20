@@ -3,6 +3,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.IO;
+using System.Text;
 using UnityEngine;
 
 [System.Serializable]
@@ -44,7 +45,11 @@ public class SaveAPSystem : MonoBehaviour
     public void SaveToJson()
     {
         string jsonData = JsonUtility.ToJson(apInfo);
-        File.WriteAllText(filePath, jsonData);
+        //File.WriteAllText(filePath, jsonData);
+        FileStream fileStream = new FileStream(filePath, FileMode.Create);
+        byte[] data = Encoding.UTF8.GetBytes(jsonData);
+        fileStream.Write(data, 0, data.Length);
+        fileStream.Close();
     }
 
     public SaveAPSystem LoadFromJson()
@@ -59,8 +64,15 @@ public class SaveAPSystem : MonoBehaviour
         {
             apInfo = new APInfo();
             SaveToJson();
-            jsonData = File.ReadAllText(filePath);
         }
+
+        FileStream fileStream = new FileStream(filePath, FileMode.Open);
+        byte[] data = Encoding.UTF8.GetBytes(jsonData);
+        fileStream.Read(data, 0, data.Length);
+        fileStream.Close();
+
+        jsonData = Encoding.UTF8.GetString(data);
+
         apInfo = JsonUtility.FromJson<APInfo>(jsonData);
 
         return this;
