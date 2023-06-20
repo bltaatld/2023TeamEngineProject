@@ -18,6 +18,8 @@ public class PlayerNameSet : MonoBehaviour
             playerName = "¹Ì¿ªÂ¯Â¯¸Ç";
         }
         SavePlayerInfo.instance.playerInfo.playerName = playerName;
+        SavePlayerInfo.instance.SavePlayerInfoToJson();
+
         popup.SetActive(false);
         Loader.LoadScene("StageSelectScene");
         return;

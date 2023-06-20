@@ -19,6 +19,7 @@ public class Loader : MonoBehaviour
 
     public static void LoadScene(string sceneName)
     {
+        SavePlayerInfo.instance.SavePlayerInfoToJson();
         nextScene = sceneName;
         SceneManager.LoadScene("Load");
     }

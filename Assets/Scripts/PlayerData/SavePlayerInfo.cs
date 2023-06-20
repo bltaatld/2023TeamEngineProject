@@ -137,4 +137,9 @@ public class SavePlayerInfo : MonoBehaviour
             gameInfo = new GameInfo();
         }
     }
+
+    private void OnApplicationQuit()
+    {
+        SavePlayerInfoToJson();
+    }
 }
