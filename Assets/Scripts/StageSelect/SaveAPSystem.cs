@@ -19,16 +19,21 @@ public class SaveAPSystem : MonoBehaviour
 
     private string savePath;
     private string fileName;
+    private string filePath;
 
     private void Awake()
     {
 #if UNITY_EDITOR
         savePath = Application.persistentDataPath + "/Data/";
 #endif
+        //#if UNITY_ANDROID
+        //        savePath = Application.dataPath + "/Data/";
+        //#endif
 #if UNITY_ANDROID
-        savePath = Application.dataPath + "/Data/";
+        savePath = Application.persistentDataPath/* + "/Data/"*/;
 #endif
         fileName = "APData.json";
+        filePath = Path.Combine(savePath, fileName);
         LoadFromJson();
     }
 
@@ -46,7 +51,7 @@ public class SaveAPSystem : MonoBehaviour
         try
         {
             string ap = JsonUtility.ToJson(apInfo);
-            File.WriteAllText(savePath + fileName, ap);
+            File.WriteAllText(filePath, ap);
         }
         catch (Exception e)
         {
@@ -56,11 +61,11 @@ public class SaveAPSystem : MonoBehaviour
 
     public void LoadFromJson()
     {
-        if (File.Exists(savePath + fileName))
+        if (File.Exists(filePath))
         {
             try
             {
-                string json = File.ReadAllText(savePath + fileName);
+                string json = File.ReadAllText(filePath);
                 if (!string.IsNullOrEmpty(json))
                 {
                     apInfo = JsonConvert.DeserializeObject<APInfo>(json);
