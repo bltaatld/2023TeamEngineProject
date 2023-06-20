@@ -33,7 +33,15 @@ public class SaveAPSystem : MonoBehaviour
         savePath = Application.dataPath + "/Data/";
 #endif
         fileName = "APData.json";
-        filePath = Path.Combine(savePath, "APData.json");
+        filePath = Path.Combine(savePath, fileName);
+
+#if UNITY_ANDROID
+        if(!Directory.Exists(Application.persistentDataPath + "/Data"))
+        {
+            Directory.CreateDirectory(Application.persistentDataPath + "/Data");
+        }
+#endif
+
         LoadFromJson();
     }
 
@@ -45,7 +53,6 @@ public class SaveAPSystem : MonoBehaviour
     public void SaveToJson()
     {
         string jsonData = JsonUtility.ToJson(apInfo);
-        //File.WriteAllText(filePath, jsonData);
         FileStream fileStream = new FileStream(filePath, FileMode.Create);
         byte[] data = Encoding.UTF8.GetBytes(jsonData);
         fileStream.Write(data, 0, data.Length);
